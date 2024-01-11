@@ -1,6 +1,7 @@
 # Welcome to Remix!
 
 - [Remix Docs](https://remix.run/docs)
+- [Kinde Remix SDK Guide](https://kinde.notion.site/Remix-guide-eeba8882b6254b7b9db20a62a927cc29?pvs=4)
 
 ## Development
 

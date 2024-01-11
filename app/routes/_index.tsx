@@ -2,6 +2,7 @@ import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { getKindeSession } from "@kinde-oss/kinde-auth-remix-sdk";
 import { Link, useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
+import { KindeUser } from "@kinde-oss/kinde-auth-remix-sdk/dist/types/types";
 
 export const meta: MetaFunction = () => {
   return [
@@ -16,7 +17,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 };
 
 export default function Index() {
-  const data = useLoaderData<{ user: object }>();
+  const data = useLoaderData<{ user: KindeUser }>();
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>

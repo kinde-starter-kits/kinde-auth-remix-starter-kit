@@ -13,7 +13,7 @@ export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
+    { title: "Kinde x Remix App" },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };

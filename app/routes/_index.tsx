@@ -1,13 +1,12 @@
+import { getKindeSession } from "@kinde-oss/kinde-remix-sdk";
 import type {
   LinksFunction,
   LoaderFunctionArgs,
   MetaFunction,
 } from "@remix-run/node";
-import { getKindeSession } from "@kinde-oss/kinde-auth-remix-sdk";
-import { Link, useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
-import { KindeUser } from "@kinde-oss/kinde-auth-remix-sdk/dist/types/types";
-import styles from "~/styles.css";
+import { Link, useLoaderData } from "@remix-run/react";
+import styles from "../styles.css";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
@@ -19,12 +18,21 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  const { user } = await getKindeSession(request);
+  const { getUser } = await getKindeSession(request);
+  const user = await getUser();
   return json({ user });
 };
 
 export default function Index() {
-  const data = useLoaderData<{ user: KindeUser }>();
+  const data = useLoaderData<{
+    user: {
+      id: string;
+      email: string;
+      given_name: string;
+      family_name: string;
+      picture: string | null;
+    };
+  }>();
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif" }}>
